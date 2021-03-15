@@ -10,8 +10,8 @@ namespace MyMoviesV2.Repositories
     {
         Task<IEnumerable<Movie>> Get();
         Task<Movie> Get(int Id);
-        Task<Movie> Update(Movie movie);
-        Task Create(Movie movie);
+        Task Update(Movie movie);
+        Task<Movie> Create(Movie movie);
         Task Delete(int Id);
     }
 }
