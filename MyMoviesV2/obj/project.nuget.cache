@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "bVvjCvXssf78Q9qj50bMFYGcAQdIMiQo6R1muSEJtBhcMdRPiS8bZq9siYfM8+WXXMN+SadzGP/3T9AP9rJ0Mw==",
+  "dgSpecHash": "SG5agqTCV2sTZfixzDGhyWxtKugLEN6xoeho+6Nf8GX1BFgiDn9kiWz0Ta7dZW0TDWgXboASYMCptamiKJdMfA==",
   "success": true,
   "projectFilePath": "C:\\Users\\MarioGomesdaSilva\\Desktop\\NOTAS - AT&T\\Cursos e treinamentos e aprendizados\\.NET core\\MyMoviesV2 app\\MyMoviesV2\\MyMoviesV2\\MyMoviesV2.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\MarioGomesdaSilva\\.nuget\\packages\\fluentvalidation\\9.5.3\\fluentvalidation.9.5.3.nupkg.sha512",
+    "C:\\Users\\MarioGomesdaSilva\\.nuget\\packages\\fluentvalidation.aspnetcore\\9.5.3\\fluentvalidation.aspnetcore.9.5.3.nupkg.sha512",
+    "C:\\Users\\MarioGomesdaSilva\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\9.5.3\\fluentvalidation.dependencyinjectionextensions.9.5.3.nupkg.sha512",
     "C:\\Users\\MarioGomesdaSilva\\.nuget\\packages\\microsoft.aspnetcore.authorization\\1.0.5\\microsoft.aspnetcore.authorization.1.0.5.nupkg.sha512",
     "C:\\Users\\MarioGomesdaSilva\\.nuget\\packages\\microsoft.aspnetcore.hosting.abstractions\\1.0.5\\microsoft.aspnetcore.hosting.abstractions.1.0.5.nupkg.sha512",
     "C:\\Users\\MarioGomesdaSilva\\.nuget\\packages\\microsoft.aspnetcore.hosting.server.abstractions\\1.0.5\\microsoft.aspnetcore.hosting.server.abstractions.1.0.5.nupkg.sha512",

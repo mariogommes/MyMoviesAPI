@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MyMoviesV2.Models;
+﻿using MyMoviesV2.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,42 +8,29 @@ namespace MyMoviesV2.Repositories
 {
     public class MovieRepository : IMovieRepository
     {
-        private readonly MovieContext _context;
-
-        public MovieRepository(MovieContext context)
+        public Task<Movie> Create(Movie movie)
         {
-            _context = context;
+            throw new NotImplementedException();
         }
 
-        public async Task<Movie> Create(Movie movie)
+        public Task Delete(int Id)
         {
-            _context.Movies.Add(movie);
-            await _context.SaveChangesAsync();
-
-            return movie; //Porque retorna movie? Boa pratica RestFul? Pesquisar.
+            throw new NotImplementedException();
         }
 
-        public async Task Delete(int Id)
+        public Task<IEnumerable<Movie>> Get()
         {
-            var MovieToDelete = await _context.Movies.FindAsync();
-            _context.Movies.Remove(MovieToDelete);
-            await _context.SaveChangesAsync();
+            throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Movie>> Get()
+        public Task<Movie> Get(int Id)
         {
-            return await _context.Movies.ToListAsync();
+            throw new NotImplementedException();
         }
 
-        public async Task<Movie> Get(int Id)
+        public Task Update(Movie movie)
         {
-            return await _context.Movies.FindAsync();
-        }
-
-        public async Task Update(Movie movie)
-        {
-            _context.Entry(movie).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            throw new NotImplementedException();
         }
     }
 }

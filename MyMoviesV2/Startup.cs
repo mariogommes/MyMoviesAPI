@@ -10,6 +10,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MyMoviesV2.Models;
+using MyMoviesV2.Repositories;
+using FluentValidation.AspNetCore;
+using MyMoviesV2.Validators;
 
 namespace MyMoviesV2
 {
@@ -28,6 +31,8 @@ namespace MyMoviesV2
             services.AddControllersWithViews();
             services.AddSwaggerDocument();
             services.AddDbContext<MovieContext>(o => o.UseSqlite("Data source=Movie.db"));
+            services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddMvc().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<MovieValidator>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

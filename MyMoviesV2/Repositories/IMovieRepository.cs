@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyMoviesV2.Repositories
 {
-    interface IMovieRepository
+    public interface IMovieRepository
     {
         Task<IEnumerable<Movie>> Get();
         Task<Movie> Get(int Id);
