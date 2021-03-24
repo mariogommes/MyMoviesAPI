@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyMoviesV2.Models
 {
-    public class MovieContext : DbContext
+    public class MovieContext : DbContext, IMovieContext
     {
         public MovieContext(DbContextOptions<MovieContext> options)
             :base(options)
