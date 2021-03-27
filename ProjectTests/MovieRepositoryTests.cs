@@ -6,6 +6,7 @@ using NUnit.Framework;
 using Moq;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace ProjectTests
 {
@@ -14,21 +15,32 @@ namespace ProjectTests
     {
 
         private MovieValidator _validator;
-        //Declarando um mock de MovieContext, mockando a classe de contexto que acessa o banco
-        //que é a dependencia da classe de repositório
-        private Mock<IMovieContext> _mockMovieContext;
         //Inicializando o repositório que vou testar mas não quero mexer no 
         //Banco real então mudei a dependencia para um banco mockado.
-        private IMovieRepository _movieRepository;
-
+        private MovieRepository _movieRepository;
+        private MovieContext _context_for_test_in_memory;
 
         [SetUp]
         public void Setup()
         {
             _validator = new MovieValidator();
-            //Inicializando o Mock
-            _mockMovieContext = new Mock<IMovieContext>();
-            _movieRepository = new MovieRepository(_mockMovieContext.Object);
+            //Criando options do contexto que configura a base de dados para InMemory
+            //Não é boa praticar usar Mockar a classe EF core, que não é Mock friendly
+            var dbContextOptions = 
+                new DbContextOptionsBuilder<MovieContext>().UseInMemoryDatabase(databaseName: "TestDb");
+
+            //Iniciando o contexto para teste com banco de dados in_memory
+            _context_for_test_in_memory = new MovieContext(dbContextOptions.Options);
+
+            //Iniciando o reposório injetando a dependencia do contexto com data base in memory.
+            _movieRepository = new MovieRepository(_context_for_test_in_memory);
+        }
+
+        [TearDown]
+        public void Teardown()
+        {
+            //Garantindo que a cada teste tem um banco novo para testar
+            _context_for_test_in_memory.Database.EnsureDeleted();
         }
 
         [Test]
@@ -44,18 +56,34 @@ namespace ProjectTests
             result.ShouldHaveValidationErrorFor(person => person.Title);
         }
 
+        //Pelo TDD está retornando null
+        //Agora tem que retornar o filme esperado
+        //Se outro teste pedir, eu uso o método create no data base.
         [Test]
-        public void Return_a_movie_in_data_base() 
+        public void Insert_a_movie_in_data_base() 
         {
             //Assert
-            var movieInDataBase = new Movie { Id = 1, Title = "Kill Bill", Director = "Tarantino", Synopsis = "Blood" };
-            _mockMovieContext.Setup(context => context.Movies.FindAsync(1)).ReturnsAsync(movieInDataBase);
+            var movieToCreate = new Movie { Id = 1, Title = "Kill Bill", Director = "Tarantino", Synopsis = "Blood" };
 
             //Act
-            var movieToGet = _movieRepository.Get(1);
+            var movieReturned = _movieRepository.Create(movieToCreate);
 
             //Assert
-            Assert.AreEqual(movieToGet.Result, movieInDataBase);
+            Assert.AreEqual(movieToCreate, movieReturned.Result);
+        }
+
+        [Test]
+        public void Insert_two_movies_in_data_base() 
+        {
+            //Arrange
+             _movieRepository.Create(new Movie { Id = 1, Title = "Kill Bill", Director = "Tarantino", Synopsis = "Blood" });
+             _movieRepository.Create(new Movie { Id = 2, Title = "Kill Bill 2", Director = "Tarantino", Synopsis = "Blood" });
+
+            //Act
+            var movies = _context_for_test_in_memory.Movies.ToListAsync();
+       
+            //Assert
+            Assert.Greater(movies.Result.Count, 1);
         }
 
     }

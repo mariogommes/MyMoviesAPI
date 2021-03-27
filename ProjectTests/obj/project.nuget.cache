@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+oeaLMzAiV2hJOzwRx0+NQXKoPA6gAPyVCDtMOIs0nrZZ26N7HDz8Z+PDKDHpFBVFQUlc6WApkiPYvs7x4zC6A==",
+  "dgSpecHash": "CyqURPUM4EPGdUrQD6/42op5nyk7YQIDXdtpoel+28afoBbY8Gg8Dgr6pISXAOBgFeQWScJ4MVqBpu1KrxHTBQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\MarioGomesdaSilva\\Desktop\\NOTAS - AT&T\\Cursos e treinamentos e aprendizados\\.NET core\\MyMoviesV2 app\\MyMoviesV2\\ProjectTests\\ProjectTests.csproj",
   "expectedPackageFiles": [
@@ -32,6 +32,7 @@
     "C:\\Users\\MarioGomesdaSilva\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.4\\microsoft.entityframeworkcore.5.0.4.nupkg.sha512",
     "C:\\Users\\MarioGomesdaSilva\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.4\\microsoft.entityframeworkcore.abstractions.5.0.4.nupkg.sha512",
     "C:\\Users\\MarioGomesdaSilva\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.4\\microsoft.entityframeworkcore.analyzers.5.0.4.nupkg.sha512",
+    "C:\\Users\\MarioGomesdaSilva\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\5.0.4\\microsoft.entityframeworkcore.inmemory.5.0.4.nupkg.sha512",
     "C:\\Users\\MarioGomesdaSilva\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.4\\microsoft.entityframeworkcore.relational.5.0.4.nupkg.sha512",
     "C:\\Users\\MarioGomesdaSilva\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\5.0.4\\microsoft.entityframeworkcore.sqlite.5.0.4.nupkg.sha512",
     "C:\\Users\\MarioGomesdaSilva\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\5.0.4\\microsoft.entityframeworkcore.sqlite.core.5.0.4.nupkg.sha512",

@@ -9,16 +9,19 @@ namespace MyMoviesV2.Repositories
 
     public class MovieRepository : IMovieRepository
     {
-        private readonly IMovieContext _movieContext;
+        private readonly MovieContext _movieContext;
 
-        public MovieRepository(IMovieContext movieContext)
+        public MovieRepository(MovieContext movieContext)
         {
             _movieContext = movieContext;
         }
 
-        public Task<Movie> Create(Movie movie)
+        public async Task<Movie> Create(Movie movie)
         {
-            throw new NotImplementedException();
+            _movieContext.Movies.Add(movie);
+            await _movieContext.SaveChangesAsync();
+
+            return movie;
         }
 
         public Task Delete(int Id)
@@ -31,9 +34,9 @@ namespace MyMoviesV2.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<Movie> Get(int Id)
+        public Task<Movie> Get(int Id)
         {
-            return await _movieContext.Movies.FindAsync(Id);
+            throw new NotImplementedException();
         }
 
         public Task Update(Movie movie)

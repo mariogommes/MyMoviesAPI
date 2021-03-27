@@ -32,6 +32,7 @@ namespace MyMoviesV2
             services.AddSwaggerDocument();
             services.AddDbContext<MovieContext>(o => o.UseSqlite("Data source=Movie.db"));
             services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<IMovieContext, MovieContext>();
             services.AddMvc().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<MovieValidator>());
         }
 

@@ -156,3 +156,4 @@ C:\Users\MarioGomesdaSilva\Desktop\NOTAS - AT&T\Cursos e treinamentos e aprendiz
 C:\Users\MarioGomesdaSilva\Desktop\NOTAS - AT&T\Cursos e treinamentos e aprendizados\.NET core\MyMoviesV2 app\MyMoviesV2\ProjectTests\obj\Debug\netcoreapp3.1\ProjectTests.genruntimeconfig.cache
 C:\Users\MarioGomesdaSilva\Desktop\NOTAS - AT&T\Cursos e treinamentos e aprendizados\.NET core\MyMoviesV2 app\MyMoviesV2\ProjectTests\bin\Debug\netcoreapp3.1\Castle.Core.dll
 C:\Users\MarioGomesdaSilva\Desktop\NOTAS - AT&T\Cursos e treinamentos e aprendizados\.NET core\MyMoviesV2 app\MyMoviesV2\ProjectTests\bin\Debug\netcoreapp3.1\Moq.dll
+C:\Users\MarioGomesdaSilva\Desktop\NOTAS - AT&T\Cursos e treinamentos e aprendizados\.NET core\MyMoviesV2 app\MyMoviesV2\ProjectTests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll
