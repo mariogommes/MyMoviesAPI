@@ -86,5 +86,19 @@ namespace ProjectTests
             Assert.Greater(movies.Result.Count, 1);
         }
 
+        [Test]
+        public void Delete_a_movie_from_data_base() 
+        {
+            //Assert
+            _movieRepository.Create(new Movie { Id = 3, Title = "Kill Bill 3", Director = "Tarantino", Synopsis = "Blood" });
+
+            //Act
+            _movieRepository.Delete(3);
+
+            //Arrange
+            Assert.IsNull(_context_for_test_in_memory.Movies.Find(3));
+
+        }
+
     }
 }

@@ -24,9 +24,11 @@ namespace MyMoviesV2.Repositories
             return movie;
         }
 
-        public Task Delete(int Id)
+        public async Task Delete(int Id)
         {
-            throw new NotImplementedException();
+            var moveToDelete = _movieContext.Movies.FindAsync(Id);
+            _movieContext.Movies.Remove(moveToDelete.Result);
+            await _movieContext.SaveChangesAsync();
         }
 
         public Task<IEnumerable<Movie>> Get()
