@@ -31,9 +31,15 @@ namespace MyMoviesV2.Repositories
             await _movieContext.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<Movie>> Get()
+        public async Task<IEnumerable<Movie>> Get()
         {
-            throw new NotImplementedException();
+            var movies = new List<Movie>()
+            {
+                new Movie { Id = 1, Title = "Kill Bill", Director = "Tarantino", Synopsis = "Blood" },
+                new Movie { Id = 2, Title = "Kill Bill 2", Director = "Tarantino", Synopsis = "Blood" }
+            };
+
+            return movies;
         }
 
         public async Task<Movie> Get(int Id)

@@ -7,6 +7,7 @@ using Moq;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ProjectTests
 {
@@ -113,6 +114,22 @@ namespace ProjectTests
 
             //Assert
             Assert.AreEqual(movieReturned.Result, movieToBeReturned);
+        }
+
+        [Test]
+        public void Get_two_movies_from_data_base() 
+        {
+            //Arrange  
+            _context_for_test_in_memory.Movies.Add(new Movie { Id = 1, Title = "Kill Bill", Director = "Tarantino", Synopsis = "Blood" });
+            _context_for_test_in_memory.Movies.Add(new Movie { Id = 2, Title = "Kill Bill 2", Director = "Tarantino", Synopsis = "Blood" });
+            _context_for_test_in_memory.SaveChanges();
+
+            //Act
+            var MovieList = _movieRepository.Get();
+
+            //Assert
+            Assert.AreEqual(MovieList.Result.Count(), 2);
+            
         }
 
     }
