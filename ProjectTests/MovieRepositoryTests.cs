@@ -62,7 +62,7 @@ namespace ProjectTests
         [Test]
         public void Insert_a_movie_in_data_base() 
         {
-            //Assert
+            //Arrange
             var movieToCreate = new Movie { Id = 1, Title = "Kill Bill", Director = "Tarantino", Synopsis = "Blood" };
 
             //Act
@@ -76,8 +76,9 @@ namespace ProjectTests
         public void Insert_two_movies_in_data_base() 
         {
             //Arrange
-             _movieRepository.Create(new Movie { Id = 1, Title = "Kill Bill", Director = "Tarantino", Synopsis = "Blood" });
-             _movieRepository.Create(new Movie { Id = 2, Title = "Kill Bill 2", Director = "Tarantino", Synopsis = "Blood" });
+            _context_for_test_in_memory.Movies.Add(new Movie { Id = 1, Title = "Kill Bill", Director = "Tarantino", Synopsis = "Blood" });
+            _context_for_test_in_memory.Movies.Add(new Movie { Id = 2, Title = "Kill Bill 2", Director = "Tarantino", Synopsis = "Blood" });
+            _context_for_test_in_memory.SaveChanges();
 
             //Act
             var movies = _context_for_test_in_memory.Movies.ToListAsync();
@@ -87,17 +88,31 @@ namespace ProjectTests
         }
 
         [Test]
-        public void Delete_a_movie_from_data_base() 
+        public async Task Delete_a_movie_from_data_base() 
         {
-            //Assert
-            _movieRepository.Create(new Movie { Id = 3, Title = "Kill Bill 3", Director = "Tarantino", Synopsis = "Blood" });
+            //Arrange
+            _context_for_test_in_memory.Movies.Add(new Movie { Id = 3, Title = "Kill Bill 3", Director = "Tarantino", Synopsis = "Blood" });
+            _context_for_test_in_memory.SaveChanges();
 
             //Act
-            _movieRepository.Delete(3);
+            await _movieRepository.Delete(3);
 
-            //Arrange
+            //Assert
             Assert.IsNull(_context_for_test_in_memory.Movies.Find(3));
+        }
 
+        [Test]
+        public void Get_a_movie_from_data_base() 
+        {
+            //Arrange
+            var movieToBeReturned = new Movie { Id = 1, Title = null, Director = "James Camaron", Synopsis = "Aliens, Dude!" };
+            _context_for_test_in_memory.Movies.Add(movieToBeReturned);
+
+            //Act
+            var movieReturned = _movieRepository.Get(1);
+
+            //Assert
+            Assert.AreEqual(movieReturned.Result, movieToBeReturned);
         }
 
     }

@@ -36,9 +36,9 @@ namespace MyMoviesV2.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<Movie> Get(int Id)
+        public async Task<Movie> Get(int Id)
         {
-            throw new NotImplementedException();
+            return await _movieContext.Movies.FindAsync(Id);
         }
 
         public Task Update(Movie movie)
