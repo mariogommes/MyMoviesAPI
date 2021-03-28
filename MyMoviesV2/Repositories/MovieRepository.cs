@@ -1,4 +1,5 @@
-﻿using MyMoviesV2.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using MyMoviesV2.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,13 +34,7 @@ namespace MyMoviesV2.Repositories
 
         public async Task<IEnumerable<Movie>> Get()
         {
-            var movies = new List<Movie>()
-            {
-                new Movie { Id = 1, Title = "Kill Bill", Director = "Tarantino", Synopsis = "Blood" },
-                new Movie { Id = 2, Title = "Kill Bill 2", Director = "Tarantino", Synopsis = "Blood" }
-            };
-
-            return movies;
+            return await _movieContext.Movies.ToListAsync();
         }
 
         public async Task<Movie> Get(int Id)

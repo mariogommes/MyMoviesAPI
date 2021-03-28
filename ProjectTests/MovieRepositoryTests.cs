@@ -132,5 +132,22 @@ namespace ProjectTests
             
         }
 
+        [Test]
+        public void Get_three_movies_from_data_base()
+        {
+            //Arrange  
+            _context_for_test_in_memory.Movies.Add(new Movie { Id = 1, Title = "Kill Bill", Director = "Tarantino", Synopsis = "Blood" });
+            _context_for_test_in_memory.Movies.Add(new Movie { Id = 2, Title = "Kill Bill 2", Director = "Tarantino", Synopsis = "Blood" });
+            _context_for_test_in_memory.Movies.Add(new Movie { Id = 3, Title = "Kill Bill 3", Director = "Tarantino", Synopsis = "Blood" });
+            _context_for_test_in_memory.SaveChanges();
+
+            //Act
+            var MovieList = _movieRepository.Get();
+
+            //Assert
+            Assert.AreEqual(MovieList.Result.Count(), 3);
+
+        }
+
     }
 }
