@@ -42,9 +42,10 @@ namespace MyMoviesV2.Repositories
             return await _movieContext.Movies.FindAsync(Id);
         }
 
-        public Task Update(Movie movie)
+        public async Task Update(Movie movie)
         {
-            throw new NotImplementedException();
+            _movieContext.Entry(movie).State = EntityState.Modified;
+            await _movieContext.SaveChangesAsync();
         }
     }
 }

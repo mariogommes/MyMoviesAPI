@@ -146,6 +146,22 @@ namespace ProjectTests
 
             //Assert
             Assert.AreEqual(MovieList.Result.Count(), 3);
+        }
+
+        [Test]
+        public void Update_a_movie_in_data_base()
+        {
+            //Arrange  
+            _context_for_test_in_memory.Movies.Add(new Movie { Id = 4, Title = "Kill Bill", Director = "Tarantino", Synopsis = "Blood" });
+            var movieTochange = _context_for_test_in_memory.Movies.Find(4);
+            movieTochange.Synopsis = "A lot of Blood";
+
+            //Act
+            _movieRepository.Update(movieTochange);
+
+            //Assert
+            var movieChanged = _context_for_test_in_memory.Movies.Find(4);
+            Assert.AreEqual("A lot of Blood", movieChanged.Synopsis);
 
         }
 
